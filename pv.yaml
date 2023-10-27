@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: specific-pv
+  labels:
+    type: special # Tento label umožňuje selekci specifického PV
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: "<NFS_SERVER_PATH>"
+    server: "<NFS_SERVER_IP>"
+  persistentVolumeReclaimPolicy: Retain
